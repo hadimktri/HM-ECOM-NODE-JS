@@ -1,2 +1,4 @@
-# HM-ECOM-NODE JS
+# HM-ECOMMERCE-NODE JS
  
+1- npm init
+

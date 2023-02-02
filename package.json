@@ -1,0 +1,22 @@
+{
+  "name": "hm-ecom-node-js",
+  "version": "1.0.0",
+  "description": "this is my first app in node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hadimktri/HM-SHOP-NODE-JS.git"
+  },
+  "author": "Hadi Mokhtari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hadimktri/HM-SHOP-NODE-JS/issues"
+  },
+  "homepage": "https://github.com/hadimktri/HM-SHOP-NODE-JS#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
