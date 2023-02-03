@@ -1,26 +1,35 @@
-const express = require('express');                                             // npm i express installed
-const bodyParser = require('body-parser');                                       // npm i body-parser installed
-const path = require('path');                                                   // npm i path installed
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', true);
 
-const app = express();                                                          // app uses express 
-app.use(bodyParser.urlencoded({ extended: false }));                           // default method to use the body parser
+const app = express();
 
-app.set('viw engine', 'ejs');                                                    // Views config for ejs
-app.set('views', 'views');                                                      // Views routing
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-const adminRoute = require('./routes/admin');                                    //name specified to the routes
-const shopRoute = require('./routes/shop');
+const adminRouter = require('./routes/admin');
+const shopRouter = require('./routes/shop');
 
-app.use(express.static(path.join(__dirname, 'public')));                        // Static files routing
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'views', 'index.html'));               // sendFile for sendig file through the html---------> example 
-// }) 
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminRoute);                                                   // admin needed here because it's not the primary root of app
-app.use(shopRoute);
+app.use('/admin', adminRouter);
+app.use(shopRouter);
 
-app.listen(3000, () => {
-    console.log('Runnig on Port 3000...')
-});
+mongoose.connect('mongodb://127.0.0.1:27017/Shop')
+    .then(result => {
+        app.listen(3000, () => {
+            console.log('Listening on port 3000');
+        });
 
+    })
+    .catch(
+        err => {
+            console.log(err);
+        }
+    )

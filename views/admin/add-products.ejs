@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/heading.ejs') %>
+        <%- include('./includes/navigation.ejs') %>
+
+        <div class="container mt-4">
+            <form action="#" method="POST">
+
+                <h3 class="font-bold mt-2">Insert Your Info</h3>
+                <div class="mb-3">
+                    <p class="mt-2 text-center text-sm text-gray-600">Don't have an account?
+                        <a href="new_user.php" class="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a>
+                    </p>
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <a href="#" class="">Forgot your password?</a>
+                </div>
+                <button type="submit" class="btn btn-dark " name="login">Submit</button>
+            </form>
+        </div>
+
+
+            <%- include('../includes/end.ejs') %>

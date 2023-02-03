@@ -1,9 +1,9 @@
-const express = require('express')
+const express = require('express');
 
-const router = express.Router() // to use the router feature of express
+const router = express.Router();
 
-router.get('/add-product', (req, res) => {
+const adminController = require('../controllers/admin');
 
-})
+router.get('/add-product', adminController.getAddProduct);
 
-module.exports= router;
+module.exports = router;
