@@ -1,9 +1,8 @@
-const express = require('express')
+const express = require('express');
+const router = express.Router();     // to use the router feature of express
 
-const router = express.Router() // to use the router feature of express
+const shopController = require('../controllers/shop')
 
-router.get('/', (req, res) => {
-    res.render('index')
-})
+router.get('/', shopController.getIndex);  //   127.0.0.1/index
 
 module.exports = router;
