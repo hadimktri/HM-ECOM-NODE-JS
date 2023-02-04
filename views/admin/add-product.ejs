@@ -3,30 +3,36 @@
         <%- include('../includes/navigation.ejs') %>
 
             <div class="container m-5">
-                <form action="/admin/add-product" method="POST">
+                <form action="/admin/<%= editing? edit-product : add-product %>" method="POST">
                     <h3 class="font-bold mt-2">Insert Your Product Details</h3>
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="title" name="title" class="form-control" id="title">
+                        <input type="title" name="title" class="form-control" id="title"
+                            value="<%= editing? product.title:'' %>">
                     </div>
 
                     <div class="mb-3">
                         <label for="imageUrl" class="form-label">ImageUrl</label>
-                        <input type="imageUrl" name="imageUrl" class="form-control" id="imageUrl">
+                        <input type="imageUrl" name="imageUrl" class="form-control" id="imageUrl"
+                            value="<%= editing? product.imageUrl:'' %>">
                     </div>
 
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="price" name="price" class="form-control" id="price">
+                        <input type="price" name="price" class="form-control" id="price"
+                            value="<%= editing? product.price:'' %>">
                     </div>
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="description" name="description" class="form-control" id="description">
+                        <input type="description" name="description" class="form-control" id="description"
+                            value="<%= editing? product.description:'' %>">
                     </div>
 
-                    <button type="submit" class="btn btn-dark " name="submit">Submit</button>
+                    <button type="submit" class="btn btn-dark " name="submit">
+                        <%= editing? " Edit" :'Add'%>
+                    </button>
                 </form>
             </div>
             <%- include('../includes/end.ejs') %>
