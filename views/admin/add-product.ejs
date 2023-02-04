@@ -3,7 +3,7 @@
         <%- include('../includes/navigation.ejs') %>
 
             <div class="container m-5">
-                <form action="/admin/<%= editing? edit-product : add-product %>" method="POST">
+                <form action="/admin/<%=editing?"edit-product":"add-product"%>" method="POST">
                     <h3 class="font-bold mt-2">Insert Your Product Details</h3>
 
                     <div class="mb-3">
@@ -30,7 +30,7 @@
                             value="<%= editing? product.description:'' %>">
                     </div>
 
-                    <button type="submit" class="btn btn-dark " name="submit">
+                    <button type="submit" class="btn btn-outline-secondary " name="submit">
                         <%= editing? " Edit" :'Add'%>
                     </button>
                 </form>
