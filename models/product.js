@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;    //new Schema class with mongoose
+const Schema = mongoose.Schema;
 
-const productSchema = new Schema({      //new schema from Schema class
+const productSchema = new Schema({
 
     title: { type: String, required: true },
     price: { type: String, required: true },
     description: { type: String, required: true },
-    imageUrl: { type: String, required: true }
+    imageUrl: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 
 });
 
-module.exports = mongoose.model('Product', productSchema);    // model has to be exported
+module.exports = mongoose.model('Product', productSchema);

@@ -12,7 +12,7 @@
                                     </h1>
                                 </header>
                                 <div class="card__image">
-                                    <img src="<%= product.imageUrl %>" alt="Product Title" />
+                                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
                                 </div>
                                 <div class="card__content">
                                     <h2 class="product__price">
@@ -27,7 +27,8 @@
                                     <a href="/admin/edit-product/<%= product._id %>?edit=true"
                                         class="btn btn-outline-warning">Edit</a>
 
-                                    <a href="/products/<%= product._id %> " class="btn btn-outline-danger">Delete</a>
+                                    <a href="/admin/delete-product/<%= product._id %> "
+                                        class="btn btn-outline-danger">Delete</a>
                                 </div>
                             </article>
                             <% } %>

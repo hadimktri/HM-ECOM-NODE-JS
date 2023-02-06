@@ -8,31 +8,35 @@
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="title" name="title" class="form-control" id="title"
-                            value="<%= editing? product.title:'' %>">
+                        <input type="text" name="title" class="form-control" id="title"
+                            value="<%=editing? product.title:'' %>">
                     </div>
 
                     <div class="mb-3">
                         <label for="imageUrl" class="form-label">ImageUrl</label>
-                        <input type="imageUrl" name="imageUrl" class="form-control" id="imageUrl"
-                            value="<%= editing? product.imageUrl:'' %>">
+                        <input type="text" name="imageUrl" class="form-control" id="imageUrl"
+                            value="<%=editing? product.imageUrl:'' %>">
                     </div>
 
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="price" name="price" class="form-control" id="price"
-                            value="<%= editing? product.price:'' %>">
+                        <input type="text" name="price" class="form-control" id="price"
+                            value="<%=editing? product.price:'' %>">
                     </div>
 
-                    <div class="mb-3">
+                    <div class=" mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="description" name="description" class="form-control" id="description"
-                            value="<%= editing? product.description:'' %>">
+                        <input type="text" name="description" class="form-control" id="description"
+                            value="<%=editing? product.description:'' %>">
                     </div>
+
 
                     <button type="submit" class="btn btn-outline-secondary " name="submit">
                         <%= editing? " Edit" :'Add'%>
                     </button>
+                    
+                    <% if(editing){ %><input type="hidden" name="productId" value="<%=product._id %>">
+                        <%}%>
                 </form>
             </div>
             <%- include('../includes/end.ejs') %>

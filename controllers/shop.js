@@ -6,6 +6,11 @@ exports.getIndex = (req, res) => {
         .catch(err => console.log(err))
 };
 
+exports.getProducts = (req, res) => {
+    Product.find().then(products => { res.render('shop/product-list', { prods: products, path: '/products', pageTitle: 'Products' }) })
+        .catch(err => console.log(err))
+}
+
 exports.getProduct = (req, res) => {
     const prodId = req.params.productId;
     Product.findById(prodId).then(product => { res.render('shop/product-details', { product: product, pageTitle: product.title, path: 'products' }) })
