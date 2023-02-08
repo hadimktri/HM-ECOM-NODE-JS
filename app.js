@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 const User = require('./models/user');
 const app = express();
-
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -16,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    User.findById("63df754bf23d8921f2b68db5").then(user => { req.user = user; next(); })
+    User.findById(('63e3db2f2447478fa9eca755')).then(user => { console.log(user); req.user = user; next(); })
         .catch(err => console.log(err))
 })
 
@@ -35,7 +34,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/Shop')
                 user.save()
             }
         })
-
     })
     .then(result => { app.listen(3000, () => { console.log('Listening on port 3000') }); })
     .catch(err => { console.log(err); })

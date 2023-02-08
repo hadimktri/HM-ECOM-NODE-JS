@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %>
+  <%- include('../includes/heading.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+      <main>
+        <% if(products.length>0){ %>
+          <ul class="cart__item-list">
+            <% products.forEach(p=> { %>
+              <li class="cart__item">
+                <div>
+                  <img src="<%= p.productId.imageUrl %>" class="img-thumbnail" alt="" />
+                </div>
+                <h1>
+                  <%= p.productId.title %>
+                </h1>
+                <h2>
+                  <%= p.quantity %>
+                </h2>
+                <form action="">
+                  <button class="btn btn-danger">حذف</button>
+                </form>
+              </li>
+              <% }) %>
+          </ul>
+          <% }else{ %>
+            <H1>Cart is empty</H1>
+            <% } %>
+      </main>
+      <%- include('../includes/end.ejs') %>

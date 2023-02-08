@@ -7,8 +7,8 @@ const UserSchema = new Schema({
     cart: { items: [{ productId: { type: Schema.Types.ObjectId, ref: "Product", required: true }, quantity: { type: Number, required: true } }] },
 });
 
-UserSchema.methods.addToCart = (product) => {
-    const cartProductIndex = this.cart.items.findIndexOf(prod => prod.productId.toString() === product._id.toString());
+UserSchema.methods.addToCart = function (product) {
+    const cartProductIndex = this.cart.items.findIndex(prod => prod.productId.toString() === product._id.toString());
 
     const newQuantity = 1;
     const updatedcartItems = [...this.cart.items];
@@ -21,7 +21,4 @@ UserSchema.methods.addToCart = (product) => {
     this.save()
 }
 
-
-
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);``
