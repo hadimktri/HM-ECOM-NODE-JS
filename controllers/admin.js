@@ -14,8 +14,9 @@ exports.postAddProduct = (req, res) => {
         imageUrl: req.body.imageUrl,
         price: req.body.price,
         description: req.body.description,
+        userId: req.user,
     })
-    product.save().then(result => { console.log('Product is created'); res.redirect('/'); });
+    product.save().then(result => res.redirect('/'));
 };
 
 exports.getEditProduct = (req, res) => {
@@ -36,11 +37,11 @@ exports.postEditProduct = (req, res) => {
         product.price = req.body.price;
         product.description = req.body.description;
         product.save();
-    }).then(result => { console.log("Product is Updated"); res.redirect('/'); })
+    }).then(result => res.redirect('/'))
 }
 
 exports.getDeleteProduct = (req, res) => {
-    Product.findByIdAndDelete(req.params.productId).then(() => { console.log("Product Removed"); res.redirect('/admin/products') }).catch(err => console.log(err))
+    Product.findByIdAndDelete(req.params.productId).then(() => { res.redirect('/admin/products') }).catch(err => console.log(err))
 };
 
 
