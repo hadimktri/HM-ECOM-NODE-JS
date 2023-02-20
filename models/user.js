@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     name: { type: String, required: true, uinque: true, minlength: 3, maxlength: 15 },
+    password: { type: String, required: true, minlength: 8},
     email: { type: String, required: true, uinque: true, lowercase: true, minlength: 8, meaxlength: true },
     cart: { items: [{ productId: { type: Schema.Types.ObjectId, ref: "Product", required: true }, quantity: { type: Number, required: true } }] }
 });

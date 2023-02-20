@@ -7,7 +7,7 @@ exports.getIndex = (req, res) => {
             res.render('shop/index', {
                 prods: products, path: '/',
                 pageTitle: 'Home',
-                isAuthenticated: req.isLoggedIn
+                isAuthenticated: req.session.isLoggedIn,
             })
         })
         .catch(err => console.log(err))
@@ -19,7 +19,7 @@ exports.getProducts = (req, res) => {
             prods: products,
             path: '/products',
             pageTitle: 'Products',
-            isAuthenticated: req.isLoggedIn
+            isAuthenticated: req.session.isLoggedIn,
         })
     })
         .catch(err => console.log(err))
@@ -32,7 +32,7 @@ exports.getProduct = (req, res) => {
             product: product,
             pageTitle: product.title,
             path: 'products',
-            isAuthenticated: req.isLoggedIn
+            isAuthenticated: req.session.isLoggedIn,
         })
     }).catch(err => { console.log(err) });
 }
@@ -51,7 +51,7 @@ exports.getCart = async (req, res) => {
         pageTitle: 'Cart',
         path: '/cart',
         products: user.cart.items,
-        isAuthenticated: req.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn,
     });
 }
 
@@ -81,7 +81,6 @@ exports.postOrder = (req, res) => {
                 },
                 products: products
             })
-
             return order.save();
         }).then(() => {
             return req.user.clearCart();
@@ -101,7 +100,7 @@ exports.getOrder = (req, res) => {
                 pageTitle: "Orders",
                 path: "/orders",
                 orders: orders,
-                isAuthenticated: req.isLoggedIn
+                isAuthenticated: req.session.isLoggedIn,
             });
         }).catch(err => {
             console.log(err)

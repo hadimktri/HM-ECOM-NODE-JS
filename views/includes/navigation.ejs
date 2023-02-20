@@ -1,26 +1,29 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link <%= path==='/products'? " active":'' %>" href="/products-list">Products</a>
-                <a class="nav-link <%= path==='/cart'? " active":'' %>" href="/cart">Cart</a>
-                <a class="nav-link <%= path==='/orders'? " active":'' %>" href="/orders">Orders</a>
-                <% if (isAuthenticated){ %>
+        <% if(isAuthenticated) { %>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link <%= path==='/products'? " active":'' %>" href="/products-list">Products</a>
+                    <a class="nav-link <%= path==='/cart'? " active":'' %>" href="/cart">Cart</a>
+                    <a class="nav-link <%= path==='/orders'? " active":'' %>" href="/orders">Orders</a>
                     <a class="nav-link <%= path==='/add-product'? " active":'' %>" href="/admin/add-product">Add
                         product</a>
                     <a class="nav-link <%= path==='/admin/products'? " active":''%>" href="/admin/products">Admin
                         Page</a>
-                    <%} %>
+                </div>
             </div>
-        </div>
-        <div class="navbar-nav me-2">
-            <a class="nav-link <%= path===''? " active":'' %>" href="/login">login</a>
-        </div>
+            <div class="navbar-nav me-2">
+                <form action="/logout" method="post">
+                    <button type="submit" class="btn nav-link " <%=path==='' ? " active" :'' %>">Logout</button>
+                </form>
+            </div>
+            <% }else{ %>
+                <div class="navbar-nav me-2">
+                    <a class="nav-link" href="/login">Log In</a>
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </div>
+                <% } %>
     </div>
 </nav>
 <main>
